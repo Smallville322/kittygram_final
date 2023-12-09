@@ -1,27 +1,51 @@
+# docker-compose.yml
 version: '3'
 
 volumes:
-  pg_data:
-  static:
+
+  pg_data_kittygram:
+  static_kittygram:
+  media_kittygram:
 
 services:
+
   db:
     image: postgres:13
+    container_name: kittygram_db
+    env_file: .env
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - pg_data_kittygram:/var/lib/postgresql/data
+    restart: always
+
   backend:
     build: ./backend/
+    container_name: kittygram_backend
     env_file: .env
-  frontend:
-    env_file: .env
-    build: ./frontend/
-    command: cp -r /app/build/. /static/
     volumes:
-      - static:/static
+      - static_kittygram:/backend_static
+      - media_kittygram:/app/media
+    depends_on:
+      - db
+    restart: on-failure
+
+  frontend:
+    build: ./frontend/
+    container_name: kittygram_frontend
+    env_file: .env
+    command: cp -r /app/build/. /frontend_static/
+    volumes:
+      - static_kittygram:/frontend_static
+    restart: no
+
   gateway:
     build: ./nginx/
+    container_name: kittygram_gateway
     env_file: .env
-    ports:
-      - 9000:80
     volumes:
-      - static:/static
+      - static_kittygram:/staticfiles
+      - media_kittygram:/media
+    ports:
+      - ${NGINX_PORT}:${HOST_PORT}
+    depends_on:
+      - backend
+    restart: always
