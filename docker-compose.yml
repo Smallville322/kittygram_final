@@ -22,7 +22,7 @@ services:
     container_name: kittygram_backend
     env_file: .env
     volumes:
-      - static_kittygram:/app/static
+      - static_kittygram:/backend_static
       - media_kittygram:/app/media
     depends_on:
       - db
@@ -35,6 +35,8 @@ services:
     command: cp -r /app/build/. /frontend_static/
     volumes:
       - static_kittygram:/frontend_static
+    depends_on:
+      - backend
     restart: no
 
   gateway:
