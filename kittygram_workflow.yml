@@ -4,6 +4,20 @@
 # провалена - это просто образ ОЧЕНЬ долго билдился
 # 3. Я не стал добавлять телеграм бота сюда потому что уже давно его делал и у меня дедлайн 24 декабря
 
+# UPD: воркфлоу падает со следующей ошибкой при сборке фронтэнда, остальное всё проходит:
+# 790.0 npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2023-12-10T23_21_47_773Z-debug-0.log
+# ------
+# Dockerfile:7
+# --------------------
+#    5 |     COPY package-lock.json package-lock.json
+#    6 |     
+#    7 | >>> RUN npm ci
+#    8 |     
+#    9 |     COPY . .
+# --------------------
+# ERROR: failed to solve: process "/dev/.buildkit_qemu_emulator /bin/sh -c npm ci" did not complete successfully: exit code: 1
+# Error: buildx failed with: ERROR: failed to solve: process "/dev/.buildkit_qemu_emulator /bin/sh -c npm ci" did not complete successfully: exit code: 1
+
 name: Main Kittygram workflow
 
 on:
@@ -37,6 +51,10 @@ jobs:
         pip install -r ./backend/requirements.txt
     - name: Test with flake8 and django tests
       env:
+        DEBUG: False
+        SECRET_KEY: django-insecure-123
+        ALLOWED_HOSTS: localhost
+        DB_ENGINE: django.db.backends.postgresql
         POSTGRES_USER: django_user
         POSTGRES_PASSWORD: django_password
         POSTGRES_DB: django_db
