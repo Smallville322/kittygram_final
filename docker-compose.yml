@@ -22,7 +22,7 @@ services:
     container_name: kittygram_backend
     env_file: .env
     volumes:
-      - static_kittygram:/backend_static
+      - static_kittygram:/app/static
       - media_kittygram:/app/media
     depends_on:
       - db
