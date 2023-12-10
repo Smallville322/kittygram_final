@@ -11,11 +11,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 environ.Env.read_env(os.path.join(BASE_DIR.parent, '.env'))
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = env('SECRET_KEY', default='django-insecure-123')
 
-DEBUG = env('DEBUG')
+DEBUG = env('DEBUG', default=False)
 
-ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(', ')
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', default='localhost, 0.0.0.0').split(', ')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -63,12 +63,12 @@ WSGI_APPLICATION = 'kittygram_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': env('DB_ENGINE'),
-        'NAME': env('POSTGRES_DB'),
-        'USER': env('POSTGRES_USER'),
-        'PASSWORD': env('POSTGRES_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
+        'ENGINE': env('DB_ENGINE', default='django.db.backends.postgresql'),
+        'NAME': env('POSTGRES_DB', default='mydatabase'),
+        'USER': env('POSTGRES_USER', default='myuser'),
+        'PASSWORD': env('POSTGRES_PASSWORD', default='mypassword'),
+        'HOST': env('DB_HOST', default='myhost'),
+        'PORT': env('DB_PORT', default=5432),
     }
 }
 
