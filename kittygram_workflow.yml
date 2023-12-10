@@ -5,6 +5,30 @@
 # 3. Я не стал добавлять телеграм бота сюда потому что уже давно его делал и у меня дедлайн 24 декабря
 
 # UPD: воркфлоу падает со следующей ошибкой при сборке фронтэнда, остальное всё проходит:
+
+# [5/8] RUN npm ci
+# 788.8 npm ERR! code ECONNRESET
+# 788.8 npm ERR! errno ECONNRESET
+# 788.9 npm ERR! network request to https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz failed, reason: Client network socket disconnected before secure TLS connection was established
+# 788.9 npm ERR! network This is a problem related to network connectivity.
+# 788.9 npm ERR! network In most cases you are behind a proxy or have bad network settings.
+# 788.9 npm ERR! network 
+# 788.9 npm ERR! network If you are behind a proxy, please make sure that the
+# 788.9 npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
+# 790.0 
+# 790.0 npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2023-12-10T23_21_47_773Z-debug-0.log
+# ERROR: process "/dev/.buildkit_qemu_emulator /bin/sh -c npm ci" did not complete successfully: exit code: 1
+# ------
+# > [5/8] RUN npm ci:
+# 788.8 npm ERR! code ECONNRESET
+# 788.8 npm ERR! errno ECONNRESET
+# 788.9 npm ERR! network request to https://registry.npmjs.org/yocto-queue/-/yocto-queue-0.1.0.tgz failed, reason: Client network socket disconnected before secure TLS connection was established
+# 788.9 npm ERR! network This is a problem related to network connectivity.
+# 788.9 npm ERR! network In most cases you are behind a proxy or have bad network settings.
+# 788.9 npm ERR! network 
+# 788.9 npm ERR! network If you are behind a proxy, please make sure that the
+# 788.9 npm ERR! network 'proxy' config is set properly.  See: 'npm help config'
+# 790.0 
 # 790.0 npm ERR! A complete log of this run can be found in: /root/.npm/_logs/2023-12-10T23_21_47_773Z-debug-0.log
 # ------
 # Dockerfile:7
