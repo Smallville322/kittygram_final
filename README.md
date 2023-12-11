@@ -103,7 +103,6 @@ sudo certbot --nginx
 sudo systemctl reload nginx
 ```
 
----
 ## Попробовать демо-версию:
 * [Kittygram](https://k92.tech)
 ## В проекте были использованы:
@@ -115,4 +114,3 @@ sudo systemctl reload nginx
 * #### Node.js
 * #### PostgreSQL
 * #### Docker
----
