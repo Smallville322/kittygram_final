@@ -1,9 +1,9 @@
-#  Проект "Kittygram"
+# Проект "Kittygram2"
 
 ## Описание проекта:
 
 - #### Проект Kittygram позволяет пользователям поделиться своим пушистым товарищем и рассказать о его достижениях!!!
----
+
 ## У нас вы можете:
 - #### Зарегистрироваться
 - #### Добавить кота 😺
@@ -12,10 +12,11 @@
 - #### Прикрепить его фотографию 📸
 - #### Рассказать о подвигах своего пушистого Властелина 🫅
 - #### Указать его возраст
----
+
 ## Как запустить проект:
 
-``` Настраиваем Docker
+```bash
+# Настраиваем Docker
 sudo apt update
 sudo apt install curl
 curl -fSL https://get.docker.com -o get-docker.sh
@@ -40,12 +41,10 @@ sudo docker compose -f docker-compose.production.yml up -d
 sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
 sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
 sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collect_static/. /static_backend/static/
-# Создаем суперпользователся. Следуем инструкциям при выполнении.
+# Создаем суперпользователя. Следуем инструкциям при выполнении.
 sudo docker compose -f docker-compose.production.yml exec backend python manage.py createsuperuser
 ```
-
 Устанавливаем и настраиваем NGINX
-
 ```bash
 # Устанавливаем NGINX
 sudo apt install nginx -y
@@ -74,11 +73,10 @@ server {
 # Сохраняем изменения и выходим из редактора
 # Проверяем корректность настроек
 sudo nginx -t
-# Запускаем NGINX
+# Запускаем службу NGINX
 sudo systemctl start nginx
 ```
-Настраиваем HTTPS
-
+Настройка HTTPS
 ```bash
 # Установка пакетного менеджера snap.
 # У этого пакетного менеджера есть нужный пакет — certbot.
@@ -102,15 +100,16 @@ sudo certbot --nginx
 # Перезапускаем NGINX
 sudo systemctl reload nginx
 ```
+Попробовать демо-версию: https://k92.tech
 
-## Попробовать демо-версию:
-* [Kittygram](https://k92.tech)
-## В проекте были использованы:
-* #### Django REST
-* #### Python 3.9
-* #### Gunicorn
-* #### Nginx
-* #### JS
-* #### Node.js
-* #### PostgreSQL
-* #### Docker
+В проекте были использованы:
+```angular2html
+Django REST
+Python 3.9
+Gunicorn
+Nginx
+JS
+Node.js
+PostgreSQL
+Docker
+```
